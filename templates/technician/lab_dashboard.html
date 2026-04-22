@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+
+<h2 class="text-center mb-3">Lab Dashboard</h2>
+
+<div class="text-end mb-3">
+    <a href="{% url 'add_test' %}" class="btn btn-primary">+ Add Test</a>
+</div>
+
+<table class="table table-bordered text-center">
+
+<tr>
+    <th>Sr No</th>
+    <th>Doctor</th>
+    <th>Patient</th>
+    <th>Test</th>
+    <th>Price</th>
+    <th>Date</th>
+    <th>Result</th>
+    <th>Edit</th>
+</tr>
+
+{% for r in records %}
+<tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ r.reffered_by }}</td>
+    <td>{{ r.patient_name.user.username }}</td>
+    <td>{{ r.lab_test }}</td>
+    <td>{{ r.test_cost }}</td>
+    <td>{{ r.created_at }}</td>
+    <td>{{ r.lab_result }}</td>
+
+    <td>
+        <a href="{% url 'edit_test' r.id %}">✏️</a>
+    </td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="8">No records found</td>
+</tr>
+{% endfor %}
+
+</table>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="?pg=1"><<</a>
+    </li>
+    {% if records.has_previous %}
+      <li class="page-item"><a class="page-link" href="?pg={{ records.previous_page_number }}">{{ records.previous_page_number }}</a></li>
+    {% endif %}
+    <li class="page-item"><a class="page-link" href="?pg={{ records.number }}">{{ records.number }}</a></li>
+    {% if records.has_next %}
+      <li class="page-item"><a class="page-link" href="?pg={{ records.next_page_number }}">{{ records.next_page_number }}</a></li>
+    {% endif %}
+    <li class="page-item">
+      <a class="page-link" href="?pg={{ records.paginator.num_pages }}">>></a>
+    </li>
+  </ul>
+</nav>
+</div>
+
+{% endblock %}

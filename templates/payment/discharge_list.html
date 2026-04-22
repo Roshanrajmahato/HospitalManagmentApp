@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card shadow">
+
+<div class="card-header bg-dark text-white">
+
+<h3>All Discharge Bills</h3>
+
+</div>
+
+<div class="card-body">
+
+<a href="{% url 'create_discharge' %}"
+   class="btn btn-success mb-3">
+
+Create New Bill
+
+</a>
+
+{% if bills %}
+
+<table class="table table-bordered table-striped">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>ID</th>
+<th>Patient</th>
+<th>Doctor</th>
+<th>Room</th>
+<th>Days</th>
+<th>Total</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for bill in bills %}
+
+<tr>
+
+<td>{{ bill.id }}</td>
+
+<td>{{ bill.patient }}</td>
+
+<td>{{ bill.doctor }}</td>
+
+<td>{{ bill.room_type }}</td>
+
+<td>{{ bill.total_days }}</td>
+
+<td>₹ {{ bill.grand_total }}</td>
+
+<td>
+
+<a href="{% url 'discharge_bill' bill.id %}"
+   class="btn btn-info btn-sm">
+
+View
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% else %}
+
+<p class="alert alert-warning">
+
+No Bills Generated Yet.
+
+</p>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card shadow">
+
+<div class="card-header bg-success text-white">
+
+<h3>Discharge Bill</h3>
+
+</div>
+
+<div class="card-body">
+
+<!-- ========================= -->
+<!-- PATIENT DETAILS -->
+<!-- ========================= -->
+
+<h5>Patient Details</h5>
+
+<table class="table table-bordered">
+
+<tr>
+<th>Patient</th>
+<td>{{ bill.patient }}</td>
+</tr>
+
+<tr>
+<th>Doctor</th>
+<td>{{ bill.doctor }}</td>
+</tr>
+
+<tr>
+<th>Treatment</th>
+<td>{{ bill.treatment }}</td>
+</tr>
+
+<tr>
+<th>Admission Date</th>
+<td>{{ bill.doa }}</td>
+</tr>
+
+<tr>
+<th>Discharge Date</th>
+<td>{{ bill.dod }}</td>
+</tr>
+
+<tr>
+<th>Total Days</th>
+<td>{{ bill.total_days }}</td>
+</tr>
+
+<tr>
+<th>Room Type</th>
+<td>{{ bill.room_type }}</td>
+</tr>
+
+<tr>
+<th>Food Required</th>
+<td>{{ bill.food_required }}</td>
+</tr>
+
+</table>
+
+<hr>
+
+<!-- ========================= -->
+<!-- BILL BREAKDOWN -->
+<!-- ========================= -->
+
+<h5>Billing Breakdown</h5>
+
+<table class="table table-striped table-bordered">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>Charge Type</th>
+<th>Total (₹)</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>Bed Charges</td>
+<td>₹ {{ bill.bed_total }}</td>
+</tr>
+
+<tr>
+<td>Nursing Charges</td>
+<td>₹ {{ bill.nursing_total }}</td>
+</tr>
+
+<tr>
+<td>Doctor Charges</td>
+<td>₹ {{ bill.doctor_total }}</td>
+</tr>
+
+<tr>
+<td>Misc Charges</td>
+<td>₹ {{ bill.misc_total }}</td>
+</tr>
+
+<tr>
+<td>Room Total</td>
+<td>₹ {{ bill.room_total }}</td>
+</tr>
+
+<tr>
+<td>Food Charges</td>
+<td>₹ {{ bill.food_total }}</td>
+</tr>
+
+<tr>
+<td>Medicine Charges (10%)</td>
+<td>₹ {{ bill.medicine_total }}</td>
+</tr>
+
+<tr class="table-success">
+
+<th>Grand Total</th>
+<th>₹ {{ bill.grand_total }}</th>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<br>
+
+<a href="{% url 'discharge_list' %}"
+   class="btn btn-primary">
+
+Back to List
+
+</a>
+
+<button onclick="window.print()"
+        class="btn btn-success">
+
+Print Bill
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

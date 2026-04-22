@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <!-- Title -->
+    <div class="text-center">
+        <h1 class="mb-3">Lab Technician Panel</h1>
+        <p>Welcome to MediCare HMS</p>
+
+        <img src="{% static 'images/lab.jpg' %}" 
+             class="img-fluid mb-4" 
+             style="max-height:400px; object-fit:cover;" 
+             alt="Lab Image">
+    </div>
+
+    <!-- Top Menu -->
+    <div class="d-flex justify-content-between align-items-center mb-4 p-3 border">
+
+        <div>
+            <a href="#" class="me-3"><b>Home</b></a>
+            <a href="#" class="me-3">Profile</a>
+        </div>
+
+        <div>
+            <b>{{ request.user.username }}</b>
+        </div>
+
+    </div>
+
+    <!-- Emp ID Section -->
+    <div class="text-center mb-4">
+        <h5>Employee ID: {{ technician.emp_id }}</h5>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="text-center">
+
+        <a href="{% url 'all_lab_tests' %}" class="btn btn-info me-3"> {% comment %} {% url 'all_lab_tests' %} {% endcomment %}
+            All Tests
+        </a>
+
+        <a href="{% url 'lab_dashboard' %}" class="btn btn-success me-3"> {% comment %}    {% endcomment %}
+            Dashboard
+        </a>
+
+        <a href="#" class="btn btn-warning"> {% comment %} {% url 'discharge_patient' %} {% endcomment %}
+            Discharge
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
