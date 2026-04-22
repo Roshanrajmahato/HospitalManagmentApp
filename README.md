@@ -202,31 +202,12 @@ http://127.0.0.1:8000/
 ```
 /payment/create-discharge/
 ```
+# Lab Techcian Workflow
 
-2. Fill:
-
-* Patient
-* Doctor
-* Treatment
-* DOA
-* DOD
-* Room Type
-* Food Required
-
-3. Submit Form
-
-System Automatically Calculates:
+1. Open:
 
 ```
-Total Days
-Bed Total
-Nursing Total
-Doctor Total
-Misc Total
-Room Total
-Food Total
-Medicine Total
-Grand Total
+/labreports/register_lab_technician/
 ```
 
 # 🔧 Common Commands
