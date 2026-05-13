@@ -11,13 +11,13 @@
     {% for doc in doctors %}
     <div class="col-md-6 mb-4">
 
-        <div class="card p-3 shadow-sm">
+        <div class="card p-3 shadow-sm" style="opacity: 0.95; background-color: rgba(255, 255, 255, 0.9)">
 
-            <h5>{{ doc.name }}</h5>
+            <h5 class="text-dark mb-2">{{ doc.name }}</h5>
 
-            <p><strong>Specialization:</strong> {{ doc.specialized }}</p>
+            <p class="text-dark mb-2"><strong>Specialization:</strong> <span class="text-dark fw-bold">{{ doc.specialized }}</span></p>
 
-            <p><strong>Age:</strong> {{ doc.age }}</p>
+            <p class="text-dark mb-2"><strong>Age:</strong> <span class="text-dark fw-bold">{{ doc.age }} Years</span></p>
 
             <a href="{% url 'doctors:appointment' doc.id treatment.id %}" 
                class="btn btn-success">

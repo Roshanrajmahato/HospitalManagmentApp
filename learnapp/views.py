@@ -77,6 +77,12 @@ def profile(request):
 
     user = request.user
 
+    # Get or create UserDetails
+    try:
+        user_details = user.userdetails
+    except UserDetails.DoesNotExist:
+        user_details = None
+
     # Patient appointments
     appointments = Appointment.objects.filter(
         user=user
@@ -97,6 +103,8 @@ def profile(request):
         request,
         "profile.html",
         {
+            'user': user,
+            'user_details': user_details,
             'appointments': appointments,
             'technician': technician
         }

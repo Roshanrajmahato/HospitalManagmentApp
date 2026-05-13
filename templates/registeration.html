@@ -6,7 +6,7 @@
             <div class="card card-body">
                 {% if registered %}
                     <h1>Thankyou for Registerion....!!!</h1>
-                    <p>Please proceed to <a href="#">Login</a></p>
+                    <p>Please proceed to <a href="{% url 'login' %}">Login</a></p>
                 {% else %}
                     <h1 style="text-align:center">Registeration Form</h1>
                 <form enctype="multipart/form-data" method="POST">
@@ -49,7 +49,11 @@
                     <div class="row">
                         {{ form1.password | as_crispy_field }}
                     </div>
-                    {{ form2.captcha}}
+                    {% if form2.captcha %}
+                    <div class="row">
+                        {{ form2.captcha }}
+                    </div>
+                    {% endif %}
                     <br>
                     <input type="submit" class="btn btn-primary" value="REGISTER">
                 </form>

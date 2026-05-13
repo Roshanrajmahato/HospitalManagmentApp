@@ -2,6 +2,46 @@
 
 {% block content %}
 
+<style>
+@media print {
+    .no-print {
+        display: none;
+    }
+    .hospital-header {
+        display: block !important;
+        page-break-after: avoid;
+    }
+    .card {
+        box-shadow: none !important;
+        border: none !important;
+    }
+}
+
+@media screen {
+    .hospital-header {
+        display: none;
+    }
+}
+
+.hospital-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #333;
+}
+
+.hospital-header h2 {
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.hospital-header p {
+    margin: 5px 0;
+    color: #666;
+}
+</style>
+
 <div class="container mt-4">
 
 <div class="card shadow">
@@ -13,6 +53,19 @@
 </div>
 
 <div class="card-body">
+
+<!-- ========================= -->
+<!-- HOSPITAL HEADER (Print Only) -->
+<!-- ========================= -->
+
+<div class="hospital-header">
+    <h2>🏥 HEALTHCARE HOSPITAL</h2>
+    <p><strong>Address:</strong> 123 Medical Street, City Center</p>
+    <p><strong>Phone:</strong> +91-XXXX-XXXX-XX | <strong>Email:</strong> info@hospital.com</p>
+    <p><strong>License No:</strong> MED/REG/2024</p>
+</div>
+
+<hr>
 
 <!-- ========================= -->
 <!-- PATIENT DETAILS -->
@@ -135,19 +188,28 @@
 
 <br>
 
-<a href="{% url 'discharge_list' %}"
-   class="btn btn-primary">
+<div class="no-print">
+    <a href="{% url 'discharge_list' %}"
+       class="btn btn-primary">
 
-Back to List
+    Back to List
 
-</a>
+    </a>
 
-<button onclick="window.print()"
-        class="btn btn-success">
+    <button onclick="window.print()"
+            class="btn btn-success">
 
-Print Bill
+    Print Bill
 
-</button>
+    </button>
+
+    <a href="#"
+       class="btn btn-warning">
+
+    💳 Make Payment
+
+    </a>
+</div>
 
 </div>
 

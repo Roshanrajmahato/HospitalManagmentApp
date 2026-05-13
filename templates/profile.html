@@ -46,17 +46,17 @@ Technician Details
 
 <!-- Patient Profile -->
 
-<p>Phone: {{ user.userdetails.phone }}</p>
+<p>Phone: {{ user_details.phone }}</p>
 
-<p>Address: {{ user.userdetails.address }}</p>
+<p>Address: {{ user_details.address }}</p>
 
-<p>Street: {{ user.userdetails.street }}</p>
+<p>Street: {{ user_details.street }}</p>
 
-<p>City: {{ user.userdetails.city }}</p>
+<p>City: {{ user_details.city }}</p>
 
-<p>State: {{ user.userdetails.state }}</p>
+<p>State: {{ user_details.state }}</p>
 
-<p>Zipcode: {{ user.userdetails.zipcode }}</p>
+<p>Zipcode: {{ user_details.zipcode }}</p>
 
 {% endif %}
 
@@ -67,29 +67,47 @@ Update Profile
 
 </a>
 
+<!-- Technician Home Button -->
+{% if technician %}
+<a href="{% url 'labtech_home' %}" 
+   class="btn btn-success ms-2">
+
+Technician Home
+
+</a>
+{% endif %}
+
 </div>
 
 
-<div class="col-md-6">
+<div class="col-md-6 d-flex flex-column align-items-center">
 
-<h5>User pic</h5>
+<h5>User Profile Picture</h5>
 
-{% if user.userdetails.userpic %}
-
-<img
-src="{{ user.userdetails.userpic.url }}"
-height="400px"
-width="300px"
-alt="no img"
-/>
-
+{% if user_details %}
+  {% if user_details.userpic %}
+    <img
+    src="/media/{{ user_details.userpic }}"
+    class="rounded-circle shadow"
+    style="height: 250px; width: 250px; object-fit: cover; border: 3px solid var(--primary);"
+    alt="Profile Picture"
+    onerror="this.src='{% static "images/avatar1.jpg" %}'"
+    />
+  {% else %}
+    <img
+    src="{% static 'images/avatar1.jpg' %}"
+    class="rounded-circle shadow"
+    style="height: 250px; width: 250px; object-fit: cover; border: 3px solid var(--primary);"
+    alt="Avatar"
+    />
+  {% endif %}
 {% else %}
-
-<img
-src="{% static 'images/avatar1.jpg' %}"
-alt="no img"
-/>
-
+  <img
+  src="{% static 'images/avatar1.jpg' %}"
+  class="rounded-circle shadow"
+  style="height: 250px; width: 250px; object-fit: cover; border: 3px solid var(--primary);"
+  alt="Avatar"
+  />
 {% endif %}
 
 </div>

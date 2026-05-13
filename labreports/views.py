@@ -181,6 +181,6 @@ def edit_test(request, id):
         test.result_desc = request.POST.get('result_desc')
         test.save()
 
-        return redirect('dashboard')
+        return redirect('lab_dashboard')
 
     return render(request, 'technician/edit_lab_test.html', {'test': test,'range_choices': RESULT_RANGE })
